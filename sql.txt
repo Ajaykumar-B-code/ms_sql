@@ -1,1 +1,20 @@
 MS SQL
+
+Design principles
+
+use firstdb;
+
+CREATE TABLE employee(
+	empId INTEGER PRIMARY KEY,
+	empName VARCHAR(50) NOT NULL,
+	empSal DECIMAL(10,2) NOT NULL,
+	job VARCHAR(50),
+	phone VARCHAR(50),
+	deptId INTEGER
+);
+
+INSERT INTO employee VALUES(01,'Ajay',25000,'developer','7674825164',10);
+
+SELECT * FROM employee;
+
+SELECT empID,empName FROM employee;
