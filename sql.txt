@@ -18,3 +18,30 @@ INSERT INTO employee VALUES(01,'Ajay',25000,'developer','7674825164',10);
 SELECT * FROM employee;
 
 SELECT empID,empName FROM employee;
+
+UPDATE employee SET empSal=empSal+1000;
+UPDATE employee SET empSal=60000 WHERE empId =2;
+
+UPDATE employee SET empSal=610000,deptId=25
+WHERE empId =2;
+
+DELETE FROM employee
+WHERE deptId=25;
+
+DELETE FROM employee;
+ SELECT * FROM employee ORDER BY empSal;
+ SELECT * FROM employee ORDER BY empSal DESC;
+
+WHERE clause:
+ SELECT * FROM employee WHERE job ='developer';
+ UPDATE employee SET empSal=empSal+25000 WHERE deptId=10;
+ DELETE FROM employee WHERE deptId=20;
+
+AGGREGATE FUNCTION
+SELECT MIN(empSal) FROM employee;
+
+SELECT MAX(empSal) FROM employee;
+
+SELECT AVG(empSal) FROM employee;
+
+SELECT COUNT(*) FROM employee;
