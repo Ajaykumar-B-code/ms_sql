@@ -1,7 +1,4 @@
-use firstdb;
+SELECT * from emp_backup
 
-SELECT * FROM employee;   
-
-ALTER TABLE employee ADD locat VARCHAR(20);
-
-ALTER TABLE employee ADD locat2 VARCHAR(20) null;
+alter table emp_backup drop column locat2
+ ALTER TABLE emp_backup ALTER COLUMN empName VARCHAR(30);
