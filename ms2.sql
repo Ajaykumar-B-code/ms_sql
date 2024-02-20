@@ -121,7 +121,7 @@ BEGIN
 	END
 END
 
-*/
+
 
 -- TRY CATCH
 
@@ -141,3 +141,27 @@ BEGIN CATCH
 	SELECT ERROR_MESSAGE() as 'Error message',ERROR_LINE() AS 'Error Line'
 	,ERROR_NUMBER() AS 'Error number',ERROR_PROCEDURE() AS 'Error Procedure',ERROR_SEVERITY() AS 'Error state';
 END CATCH
+*/
+
+--WAITFOR
+
+SELECT GETDATE() AS 'current time';
+GO
+BEGIN 
+	WAITFOR TIME '19:57:00'
+	SELECT * FROM employee;
+END
+GO
+SELECT GETDATE() AS 'CURRENT TIME';
+GO
+
+
+SELECT GETDATE() AS 'current time';
+GO
+BEGIN 
+	WAITFOR DELAY '00:00:15'
+	SELECT * FROM employee;
+END
+GO
+SELECT GETDATE() AS 'CURRENT TIME';
+GO
