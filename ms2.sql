@@ -55,7 +55,7 @@ ON e.emp_deptid=d.dept_id;
 SELECT e.emp_id,e.emp_name,e.emp_sal,d.dept_name,d.dept_location
 FROM employee AS e
 FULL OUTER JOIN department AS d
-ON e.emp_deptid=d.dept_id;*/
+ON e.emp_deptid=d.dept_id;
 
 
 --SUB QUERIES
@@ -69,4 +69,8 @@ AND emp_deptid = (SELECT emp_deptId FROM employee WHERE emp_name ='ADAM')
 
 
 SELECT * FROM employee 
-WHERE emp_deptid = (SELECT dept_id FROM department WHERE dept_location='NEW YORK');
+WHERE emp_deptid = (SELECT dept_id FROM department WHERE dept_location='NEW YORK');*/
+
+DECLARE @name VARCHAR(50),@salary DECIMAL(7,2);
+SELECT @name = emp_name,@salary = emp_sal FROM employee;
+SELECT @name as 'Name', @salary as 'Salary';
