@@ -105,7 +105,7 @@ BEGIN
 			PRINT 'Average salary is less than 25000';
 		END
 END
-*/
+
 
 SELECT * FROM employee;
 
@@ -121,3 +121,23 @@ BEGIN
 	END
 END
 
+*/
+
+-- TRY CATCH
+
+BEGIN TRY
+	SELECT 100/5 AS 'DIVISION';
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE() as 'Error message';
+END CATCH
+
+
+
+BEGIN TRY
+	SELECT 100/0 AS 'DIVISION';
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE() as 'Error message',ERROR_LINE() AS 'Error Line'
+	,ERROR_NUMBER() AS 'Error number',ERROR_PROCEDURE() AS 'Error Procedure',ERROR_SEVERITY() AS 'Error state';
+END CATCH
