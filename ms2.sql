@@ -90,7 +90,7 @@ BEGIN
 		PRINT 'Department ID: ' + @DeptID;
 	END
 END
-*/
+
 
 BEGIN
 	DECLARE @salary DECIMAL;
@@ -104,5 +104,20 @@ BEGIN
 		BEGIN
 			PRINT 'Average salary is less than 25000';
 		END
+END
+*/
+
+SELECT * FROM employee;
+
+BEGIN 
+	WHILE(SELECT MIN(emp_sal) FROM employee)<80000
+	BEGIN 
+		UPDATE employee SET emp_sal+=10000;
+		PRINT 'Salary update';
+		SELECT * FROM employee;
+		IF(select MIN(emp_sal) FROM employee)>=80000
+		PRINT 'minimum salary is greater than 80000'
+		BREAK;
+	END
 END
 
