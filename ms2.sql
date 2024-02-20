@@ -92,3 +92,17 @@ BEGIN
 END
 */
 
+BEGIN
+	DECLARE @salary DECIMAL;
+	SELECT @salary =AVG(emp_sal) FROM employee;
+	SELECT @salary AS 'Average Salary';
+	IF @salary>50000
+		BEGIN 
+			PRINT 'Average Salary is greater than 25000';
+		 END
+	ELSE
+		BEGIN
+			PRINT 'Average salary is less than 25000';
+		END
+END
+
