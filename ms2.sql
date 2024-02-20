@@ -69,8 +69,26 @@ AND emp_deptid = (SELECT emp_deptId FROM employee WHERE emp_name ='ADAM')
 
 
 SELECT * FROM employee 
-WHERE emp_deptid = (SELECT dept_id FROM department WHERE dept_location='NEW YORK');*/
+WHERE emp_deptid = (SELECT dept_id FROM department WHERE dept_location='NEW YORK');
 
 DECLARE @name VARCHAR(50),@salary DECIMAL(7,2);
 SELECT @name = emp_name,@salary = emp_sal FROM employee;
 SELECT @name as 'Name', @salary as 'Salary';
+GO
+
+DECLARE @name VARCHAR(50),@salary DECIMAL(7,2);
+SELECT @name = emp_name,@salary = emp_sal FROM employee;
+SELECT @name as 'Name', @salary as 'Salary';
+GO
+
+BEGIN 
+	DECLARE @name VARCHAR(50),@salary INTEGER,@deptID VARCHAR(10) = 'D3';
+	SELECT @name =emp_name,@salary=emp_sal FROM employee
+	WHERE emp_deptid=@deptID;
+	SELECT @name 'Name',@salary 'Salary';
+	BEGIN
+		PRINT 'Department ID: ' + @DeptID;
+	END
+END
+*/
+
