@@ -1,5 +1,5 @@
 
-create database joins
+/*create database joins
 
 use joins
 
@@ -37,4 +37,10 @@ INSERT INTO department VALUES
 SELECT e.emp_id,e.emp_name,e.emp_sal,d.dept_name,d.dept_location
 FROM employee AS e
 INNER JOIN department AS d
+ON e.emp_deptid=d.dept_id;*/
+
+
+SELECT e.emp_id,e.emp_name,e.emp_sal,d.dept_name,d.dept_location
+FROM employee AS e
+LEFT OUTER JOIN department AS d
 ON e.emp_deptid=d.dept_id;
