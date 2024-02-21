@@ -55,7 +55,7 @@ ON e.emp_deptid=d.dept_id;
 SELECT e.emp_id,e.emp_name,e.emp_sal,d.dept_name,d.dept_location
 FROM employee AS e
 FULL OUTER JOIN department AS d
-ON e.emp_deptid=d.dept_id;*/
+ON e.emp_deptid=d.dept_id;
 
 
 --SUB QUERIES
@@ -70,3 +70,98 @@ AND emp_deptid = (SELECT emp_deptId FROM employee WHERE emp_name ='ADAM')
 
 SELECT * FROM employee 
 WHERE emp_deptid = (SELECT dept_id FROM department WHERE dept_location='NEW YORK');
+
+DECLARE @name VARCHAR(50),@salary DECIMAL(7,2);
+SELECT @name = emp_name,@salary = emp_sal FROM employee;
+SELECT @name as 'Name', @salary as 'Salary';
+GO
+
+DECLARE @name VARCHAR(50),@salary DECIMAL(7,2);
+SELECT @name = emp_name,@salary = emp_sal FROM employee;
+SELECT @name as 'Name', @salary as 'Salary';
+GO
+
+BEGIN 
+	DECLARE @name VARCHAR(50),@salary INTEGER,@deptID VARCHAR(10) = 'D3';
+	SELECT @name =emp_name,@salary=emp_sal FROM employee
+	WHERE emp_deptid=@deptID;
+	SELECT @name 'Name',@salary 'Salary';
+	BEGIN
+		PRINT 'Department ID: ' + @DeptID;
+	END
+END
+
+
+BEGIN
+	DECLARE @salary DECIMAL;
+	SELECT @salary =AVG(emp_sal) FROM employee;
+	SELECT @salary AS 'Average Salary';
+	IF @salary>50000
+		BEGIN 
+			PRINT 'Average Salary is greater than 25000';
+		 END
+	ELSE
+		BEGIN
+			PRINT 'Average salary is less than 25000';
+		END
+END
+
+
+SELECT * FROM employee;
+
+BEGIN 
+	WHILE(SELECT MIN(emp_sal) FROM employee)<80000
+	BEGIN 
+		UPDATE employee SET emp_sal+=10000;
+		PRINT 'Salary update';
+		SELECT * FROM employee;
+		IF(select MIN(emp_sal) FROM employee)>=80000
+		PRINT 'minimum salary is greater than 80000'
+		BREAK;
+	END
+END
+
+
+
+-- TRY CATCH
+
+BEGIN TRY
+	SELECT 100/5 AS 'DIVISION';
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE() as 'Error message';
+END CATCH
+
+
+
+BEGIN TRY
+	SELECT 100/0 AS 'DIVISION';
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE() as 'Error message',ERROR_LINE() AS 'Error Line'
+	,ERROR_NUMBER() AS 'Error number',ERROR_PROCEDURE() AS 'Error Procedure',ERROR_SEVERITY() AS 'Error state';
+END CATCH
+*/
+
+--WAITFOR
+
+SELECT GETDATE() AS 'current time';
+GO
+BEGIN 
+	WAITFOR TIME '19:57:00'
+	SELECT * FROM employee;
+END
+GO
+SELECT GETDATE() AS 'CURRENT TIME';
+GO
+
+
+SELECT GETDATE() AS 'current time';
+GO
+BEGIN 
+	WAITFOR DELAY '00:00:15'
+	SELECT * FROM employee;
+END
+GO
+SELECT GETDATE() AS 'CURRENT TIME';
+GO
