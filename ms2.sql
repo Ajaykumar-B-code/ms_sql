@@ -141,7 +141,7 @@ BEGIN CATCH
 	SELECT ERROR_MESSAGE() as 'Error message',ERROR_LINE() AS 'Error Line'
 	,ERROR_NUMBER() AS 'Error number',ERROR_PROCEDURE() AS 'Error Procedure',ERROR_SEVERITY() AS 'Error state';
 END CATCH
-*/
+
 
 --WAITFOR
 
@@ -165,3 +165,17 @@ END
 GO
 SELECT GETDATE() AS 'CURRENT TIME';
 GO
+*/
+
+--STORED PROCEDURE
+use joins;
+GO
+
+CREATE PROCEDURE proced_allemp
+AS
+BEGIN
+	SELECT * FROM employee;
+END
+GO
+
+EXECUTE proced_allemp;
