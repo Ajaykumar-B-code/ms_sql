@@ -179,7 +179,7 @@ END
 GO
 
 EXECUTE proced_allemp;
-*/
+
 
 --PARAMETERISED STORED PROCEDURE
 
@@ -193,4 +193,18 @@ BEGIN
 END
 GO
 
-EXECUTE proc_empDetailsLocationWise @location='Mumbai';
+EXECUTE proc_empDetailsLocationWise @location='Mumbai';*/
+
+--ALTER STORED PROCEDURE
+
+ALTER PROCEDURE proc_empDetailsLocationWise(@location AS VARCHAR(100))
+AS
+BEGIN
+	SELECT * FROM employee AS e
+	INNER  JOIN department AS d
+	ON e.emp_deptid=d.dept_id
+	WHERE dept_location=@location;
+END
+GO
+
+EXECUTE proc_empDetailsLocationWise @location='NEW YORK';
