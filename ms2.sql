@@ -141,7 +141,7 @@ BEGIN CATCH
 	SELECT ERROR_MESSAGE() as 'Error message',ERROR_LINE() AS 'Error Line'
 	,ERROR_NUMBER() AS 'Error number',ERROR_PROCEDURE() AS 'Error Procedure',ERROR_SEVERITY() AS 'Error state';
 END CATCH
-*/
+
 
 --WAITFOR
 
@@ -165,3 +165,48 @@ END
 GO
 SELECT GETDATE() AS 'CURRENT TIME';
 GO
+
+
+--STORED PROCEDURE
+use joins;
+GO
+
+CREATE PROCEDURE proced_allemp
+AS
+BEGIN
+	SELECT * FROM employee;
+END
+GO
+
+EXECUTE proced_allemp;
+
+
+--PARAMETERISED STORED PROCEDURE
+
+CREATE PROCEDURE proc_empDetailsLocationWise(@location AS VARCHAR(100))
+AS
+BEGIN
+	SELECT * FROM employee AS e
+	INNER  JOIN department AS d
+	ON e.emp_deptid=d.dept_id
+	WHERE dept_location='Mumbai';
+END
+GO
+
+EXECUTE proc_empDetailsLocationWise @location='Mumbai';
+
+--ALTER STORED PROCEDURE
+
+ALTER PROCEDURE proc_empDetailsLocationWise(@location AS VARCHAR(100))
+AS
+BEGIN
+	SELECT * FROM employee AS e
+	INNER  JOIN department AS d
+	ON e.emp_deptid=d.dept_id
+	WHERE dept_location=@location;
+END
+GO
+
+EXECUTE proc_empDetailsLocationWise @location='NEW YORK';*/
+
+EXECUTE sp_rename 'proc_empDetailsLocationWise','proc_employeeDetailsLocationWise';
