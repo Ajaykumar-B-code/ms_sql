@@ -165,7 +165,7 @@ END
 GO
 SELECT GETDATE() AS 'CURRENT TIME';
 GO
-*/
+
 
 --STORED PROCEDURE
 use joins;
@@ -179,3 +179,18 @@ END
 GO
 
 EXECUTE proced_allemp;
+*/
+
+--PARAMETERISED STORED PROCEDURE
+
+CREATE PROCEDURE proc_empDetailsLocationWise(@location AS VARCHAR(100))
+AS
+BEGIN
+	SELECT * FROM employee AS e
+	INNER  JOIN department AS d
+	ON e.emp_deptid=d.dept_id
+	WHERE dept_location='Mumbai';
+END
+GO
+
+EXECUTE proc_empDetailsLocationWise @location='Mumbai';
