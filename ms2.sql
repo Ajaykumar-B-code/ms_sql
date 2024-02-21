@@ -193,7 +193,7 @@ BEGIN
 END
 GO
 
-EXECUTE proc_empDetailsLocationWise @location='Mumbai';*/
+EXECUTE proc_empDetailsLocationWise @location='Mumbai';
 
 --ALTER STORED PROCEDURE
 
@@ -207,4 +207,6 @@ BEGIN
 END
 GO
 
-EXECUTE proc_empDetailsLocationWise @location='NEW YORK';
+EXECUTE proc_empDetailsLocationWise @location='NEW YORK';*/
+
+EXECUTE sp_rename 'proc_empDetailsLocationWise','proc_employeeDetailsLocationWise';
